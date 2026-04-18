@@ -1,44 +1,24 @@
-name: Deploy to SFTP
+name: Upload via SFTP (Overwrite Only)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ] # Sesuaikan dengan branch utama Anda
+  workflow_dispatch:     # Memungkinkan trigger manual dari tab Actions
 
 jobs:
-  deploy:
+  sftp-upload:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Load .git-ftp-ignore
-        run: |
-          if [ -f ".git-ftp-ignore" ]; then
-            echo "Applying .git-ftp-ignore rules..."
-            # Loop through each line in the ignore file
-            while IFS= read -r path; do
-              # Skip comments and empty lines
-              [[ "$path" =~ ^#.*$ || -z "$path" ]] && continue
-              
-              echo "Excluding from upload: ./public_html/$path"
-              # Delete the file/folder locally so SFTP won't upload it
-              rm -rf "./public_html/$path"
-            done < .git-ftp-ignore
-          else
-            echo "No .git-ftp-ignore file found, uploading everything."
-          fi
-
-      - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Upload files to SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.0.4
         with:
           username: ${{ secrets.usr }}
-          server: ${{ secrets.ser }}
           password: ${{ secrets.psw }}
-          port: 22
-          
-          # Enforce SFTP protocol
-          sftp_only: true 
-          
-          local_path: './public_html'
-          remote_path: './public_html'
+          server:   ${{ secrets.ser }}
+          port:     22                # Ganti jika SFTP Anda menggunakan port lain
+          local_dir: './public_html'             # Folder di repo yang ingin diupload (misal: './dist', './public', dll)
+          remote_dir: './public_html' # Path tujuan di server SFTP
+          args: '-o StrictHostKeyChecking=no -o ConnectTimeout=10'
