@@ -537,7 +537,7 @@ player.volume.style.backgroundSize = (v / 1000 * 100)+"% 100%";
     }
     player.song.setCover = function(src1) {
     src = src1;
-    player.cover.attr("src", "incl/fles.png.png");
+    player.cover.attr("src", "incl/fles.png");
     if(typeof player.covers[src.song.ID] != "undefined") {
         player.cover.attr("src", player.covers[src.song.ID]);
         return player.song.setColor(src.cover);
@@ -555,11 +555,11 @@ player.volume.style.backgroundSize = (v / 1000 * 100)+"% 100%";
     player.covers[src.song.ID] = cover;
     player.song.setColor(src.cover);
     } else {
-        player.cover.attr("src", "incl/fles.png.png");
+        player.cover.attr("src", "incl/fles.png");
     }
     },
     onError: function(e) {
-    player.cover.attr("src", "incl/fles.png.png");
+    player.cover.attr("src", "incl/fles.png");
     }
     });
     }
@@ -577,7 +577,7 @@ player.volume.style.backgroundSize = (v / 1000 * 100)+"% 100%";
     newTrackI.setAttribute("onclick", "player.queueDiv.move("+song.ID+")");
     newTrackImg = document.createElement("img");
     newTrackImg.classList.add("image");
-    if(typeof player.covers[song.ID] == "undefined") newTrackImg.src = "incl/fles.png.png";
+    if(typeof player.covers[song.ID] == "undefined") newTrackImg.src = "incl/fles.png";
     else newTrackImg.src = player.covers[song.ID];
     newTrackCover.append(newTrackI, newTrackImg);
         newTrackNames = document.createElement("div");
@@ -629,7 +629,7 @@ player.volume.style.backgroundSize = (v / 1000 * 100)+"% 100%";
     player.number = -1;
     player.name.innerHTML  = "'.$this->getLocalizedString("songAddNameFieldPlaceholder").'";
     player.author.innerHTML  = "'.$this->getLocalizedString("songAddAuthorFieldPlaceholder").'";
-    player.cover.src = "incl/fles.png.png";
+    player.cover.src = "incl/fles.png";
     player.song.ID = "";
     player.song.src = "";
     pauses = document.querySelectorAll("button i.fa-pause");
