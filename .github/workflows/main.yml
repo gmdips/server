@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload to SFTP
-        uses: cross-the-world/sftp-upload-action@v1.6.1
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           host: ${{ secrets.ser }}
-          user: ${{ secrets.usr }}
-          pass: ${{ secrets.psw }}
+          username: ${{ secrets.usr }}
+          password: ${{ secrets.psw }}
           port: 22
-          local_path: './public_html/*' # Mengupload isi folder public_html
-          remote_path: 'public_html'    # Sesuai folder yang terlihat di gambar Anda
-          args: '-o StrictHostKeyChecking=no'
+          local_path: './public_html/' # Folder di GitHub (pastikan folder ini ada di repo)
+          remote_path: 'public_html'    # Folder tujuan (sesuai gambar Anda)
+          sftp_args: '-o StrictHostKeyChecking=no'
