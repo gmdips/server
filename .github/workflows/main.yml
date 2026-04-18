@@ -15,10 +15,10 @@ jobs:
       - name: Upload to SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          host: ${{ secrets.ser }}
+          server: ${{ secrets.ser }}      # Menggunakan 'server', bukan 'host'
           username: ${{ secrets.usr }}
           password: ${{ secrets.psw }}
           port: 22
-          local_path: './public_html/' # Folder di GitHub (pastikan folder ini ada di repo)
-          remote_path: 'public_html'    # Folder tujuan (sesuai gambar Anda)
-          sftp_args: '-o StrictHostKeyChecking=no'
+          local_path: './public_html/'
+          remote_path: 'public_html'
+          sftpArgs: '-o StrictHostKeyChecking=no' # Menggunakan 'sftpArgs', bukan 'sftp_args'
