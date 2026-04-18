@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload to SFTP
-        uses: Dylan700/sftp-upload-action@v1.1.5
+        uses: Dylan700/sftp-upload-action@latest
         with:
           server: ${{ secrets.ser }}
           username: ${{ secrets.usr }}
           password: ${{ secrets.psw }}
           port: 22
-          # Format 'uploads' adalah: [local_path] => [remote_path]
+          # Gunakan format ini untuk 'uploads'
           uploads: |
-            ./public_html/ => public_html/
+            public_html/ => public_html/
