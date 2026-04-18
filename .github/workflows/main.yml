@@ -1,9 +1,9 @@
-name: Upload via SFTP (Overwrite Only)
+name: SFTP Upload (Overwrite Only)
 
 on:
   push:
-    branches: [ "main" ] # Sesuaikan dengan branch utama Anda
-  workflow_dispatch:     # Memungkinkan trigger manual dari tab Actions
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   sftp-upload:
@@ -12,13 +12,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Upload files to SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.0.4
+      - name: Upload to SFTP
+        uses: cross-the-world/sftp-pipeline@v1.1.0
         with:
-          username: ${{ secrets.usr }}
-          password: ${{ secrets.psw }}
-          server:   ${{ secrets.ser }}
-          port:     22                # Ganti jika SFTP Anda menggunakan port lain
-          local_dir: './public_html'             # Folder di repo yang ingin diupload (misal: './dist', './public', dll)
-          remote_dir: './public_html' # Path tujuan di server SFTP
-          args: '-o StrictHostKeyChecking=no -o ConnectTimeout=10'
+          host: ${{ secrets.ser }}
+          user: ${{ secrets.usr }}
+          pass: ${{ secrets.psw }}
+          port: 22
+          local_dir: 'public_html' # Folder di repo GitHub Anda
+          remote_dir: 'public_html' # Folder yang terlihat di gambar Anda
+          args: '-o StrictHostKeyChecking=no'
