@@ -13,12 +13,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload to SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: Dylan700/sftp-upload-action@latest
         with:
-          server: ${{ secrets.ser }}      # Menggunakan 'server', bukan 'host'
+          server: ${{ secrets.ser }}
           username: ${{ secrets.usr }}
           password: ${{ secrets.psw }}
           port: 22
-          local_path: './public_html/'
-          remote_path: 'public_html'
-          sftpArgs: '-o StrictHostKeyChecking=no' # Menggunakan 'sftpArgs', bukan 'sftp_args'
+          local_path: './public_html/'  # Folder di repo GitHub Anda
+          remote_path: 'public_html'    # Folder tujuan di server (sesuai gambar)
