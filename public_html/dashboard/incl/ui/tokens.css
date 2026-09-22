@@ -1,0 +1,106 @@
+/* ==========================================================================
+   GDIPS UI — Design Tokens
+   --------------------------------------------------------------------------
+   Single source of truth for the GDIPS visual language.
+
+   Identity: Geometry Dash × Indonesian community × Open source.
+   - Warm dark neutral surfaces (sogan/night), never blue-gray "cyber".
+   - One primary accent (GDIPS red) + one supporting accent (_sig gold).
+   - A restrained kawung-inspired geometry motif (see --kawung-svg).
+   Override tokens here; components only consume tokens.
+   ========================================================================== */
+
+:root {
+	color-scheme: dark;
+
+	/* ---- Surfaces (warm dark stack) ---- */
+	--bg-0: #100f13;          /* page background            */
+	--bg-1: #16151a;          /* sidebar / raised bands     */
+	--bg-2: #1d1b22;          /* cards, panels              */
+	--bg-3: #262331;          /* hover / nested surfaces    */
+	--bg-4: #322e3d;          /* pressed / strongest fill   */
+	--ink-line: #2b2833;      /* hairline borders           */
+	--ink-line-strong: #3a3645;
+
+	/* ---- Text ---- */
+	--tx-1: #f4f3f6;          /* primary text               */
+	--tx-2: #a9a5b4;          /* secondary text             */
+	--tx-3: #787383;          /* muted / metadata           */
+	--tx-inv: #17151c;        /* text on accent fills       */
+
+	/* ---- Brand accents ----
+	   merah: GDIPS red, primary actions & identity.
+	   kuning: signature gold — stars, featured, sparing use.  */
+	--merah: #e5484d;
+	--merah-strong: #f2555a;
+	--merah-deep: #b23539;
+	--merah-soft: rgba(229, 72, 77, 0.14);
+	--kuning: #eab04d;
+	--kuning-soft: rgba(234, 176, 77, 0.14);
+
+	/* ---- Semantic states ---- */
+	--ok: #4cc38a;
+	--ok-soft: rgba(76, 195, 138, 0.14);
+	--warn: #eab04d;
+	--warn-soft: rgba(234, 176, 77, 0.14);
+	--danger: #e5484d;
+	--danger-soft: rgba(229, 72, 77, 0.14);
+	--info: #6cb2f7;
+	--info-soft: rgba(108, 178, 247, 0.14);
+
+	/* ---- GD difficulty language ---- */
+	--diff-easy: #58c47a;
+	--diff-normal: #58a6e8;
+	--diff-hard: #e8b04d;
+	--diff-harder: #e8734d;
+	--diff-insane: #d959b8;
+	--diff-demon: #e5484d;
+	--diff-auto: #6cb2f7;
+
+	/* ---- Typography ---- */
+	--font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+	--font-display: "Chakra Petch", "Inter", system-ui, sans-serif;
+	--fs-xs: 0.75rem;     /* 12px compact metadata  */
+	--fs-sm: 0.8438rem;   /* 13.5px                 */
+	--fs-md: 0.9375rem;   /* 15px body              */
+	--fs-lg: 1.0625rem;   /* 17px emphasized body   */
+	--fs-xl: 1.375rem;    /* 22px section titles    */
+	--fs-2xl: 1.75rem;    /* 28px page titles       */
+	--fs-hero: clamp(1.9rem, 1.2rem + 2.4vw, 2.6rem);
+	--lh-tight: 1.2;
+	--lh-body: 1.55;
+
+	/* ---- Shape ---- */
+	--r-sm: 6px;
+	--r-md: 9px;
+	--r-lg: 13px;
+	--r-full: 999px;
+
+	/* ---- Spacing (4px scale) ---- */
+	--sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+	--sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+	--sp-12: 48px; --sp-16: 64px;
+
+	/* ---- Elevation (restrained, no glow) ---- */
+	--sh-1: 0 1px 2px rgba(0, 0, 0, 0.35);
+	--sh-2: 0 6px 20px -6px rgba(0, 0, 0, 0.5);
+	--sh-3: 0 16px 44px -12px rgba(0, 0, 0, 0.6);
+
+	/* ---- Motion ---- */
+	--tr-fast: 130ms cubic-bezier(0.3, 0.7, 0.4, 1);
+	--tr-med: 220ms cubic-bezier(0.3, 0.7, 0.4, 1);
+
+	/* ---- Layout ---- */
+	--sidebar-w: 244px;
+	--topbar-h: 58px;
+	--content-max: 1220px;
+
+	/* ---- Kawung motif (batik-inspired geometry, used at low opacity) ----
+	   Four-petal kawung rosette drawn with strokes only; recolorable via
+	   currentColor. Use with .gd-kawung utility classes. */
+	--kawung-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.1'%3E%3Cpath d='M28 6c5 6 5 16 0 22-5-6-5-16 0-22Z'/%3E%3Cpath d='M28 50c-5-6-5-16 0-22 5 6 5 16 0 22Z'/%3E%3Cpath d='M6 28c6-5 16-5 22 0-6 5-16 5-22 0Z'/%3E%3Cpath d='M50 28c-6 5-16 5-22 0 6-5 16-5 22 0Z'/%3E%3Ccircle cx='28' cy='28' r='3.2'/%3E%3C/g%3E%3C/svg%3E");
+	--kawung-size: 56px;
+
+	/* ---- Legacy compatibility aliases (old cvolton palette) ---- */
+	--c-link: #7db4e8;
+}

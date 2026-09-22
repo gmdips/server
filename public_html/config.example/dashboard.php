@@ -110,3 +110,9 @@ $cobaltAPI[] = 'https://cobalt.gcs.skin';
 
 $iconsRendererServer = 'https://gdicon.oat.zone';
 ?>
+
+// Project / open source links shown in the sidebar, footer and project page.
+// Point these at YOUR fork or community so the open source identity stays honest.
+
+$projectRepo = 'https://github.com/Fenix668/GMDprivateServer'; // source code
+// $projectIssues is derived from $projectRepo + /issues
