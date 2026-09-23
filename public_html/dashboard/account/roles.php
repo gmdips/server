@@ -104,6 +104,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                         ":color"=>$color, ":badge"=>$badge
                     ]);
                     $roleID = (int)$db->lastInsertId();
+
+                    foreach($permissions as $permission){
+                        $value = max(0, min(2, (int)($_POST["perm"][$permission] ?? 0)));
+                        $q = $db->prepare("UPDATE roles SET `".$permission."`=:value WHERE roleID=:id");
+                        $q->execute([":value"=>$value, ":id"=>$roleID]);
+                    }
+
                     $notice = "Role created.";
                 }
                 $db->commit();
